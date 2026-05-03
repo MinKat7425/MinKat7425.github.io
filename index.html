@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minervah Wathke | Political Scientist</title>
+<style>
+  :root {
+    --gold: #C49A0C;
+    --gold-light: #F5E8B0;
+    --gold-dark: #8B6A05;
+    --brown: #3D2410;
+    --brown-mid: #6B3E1E;
+    --cream: #FAF7F0;
+    --cream-dark: #F0EAD8;
+    --text: #2C1A0E;
+    --text-muted: #6B5A4E;
+    --white: #FFFFFF;
+    --border: rgba(61,36,16,0.15);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: Georgia, 'Times New Roman', serif; background: var(--cream); color: var(--text); line-height: 1.7; font-size: 16px; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: var(--brown); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .nav-name { color: var(--gold-light); font-size: 15px; font-weight: normal; letter-spacing: 0.04em; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a { color: rgba(245,232,176,0.75); text-decoration: none; font-family: 'Arial', sans-serif; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* HERO */
+  .hero { background: var(--brown); color: var(--cream); padding: 5rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center top, rgba(196,154,12,0.18) 0%, transparent 70%); pointer-events: none; }
+  .hero-sunflower { width: 80px; height: 80px; margin: 0 auto 1.5rem; opacity: 0.92; }
+  .hero h1 { font-size: 2.6rem; font-weight: normal; letter-spacing: 0.03em; color: var(--gold-light); margin-bottom: 0.3rem; }
+  .hero-pronounce { font-family: Arial, sans-serif; font-size: 13px; color: rgba(245,232,176,0.55); letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+  .hero-pronoun { font-family: Arial, sans-serif; font-size: 12px; color: rgba(245,232,176,0.45); }
+  .hero-tagline { margin: 1.5rem auto 0; max-width: 640px; font-size: 1.05rem; color: rgba(250,247,240,0.8); line-height: 1.8; font-style: italic; }
+  .hero-fields { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; }
+  .field-tag { background: rgba(196,154,12,0.2); border: 1px solid rgba(196,154,12,0.4); color: var(--gold-light); font-family: Arial, sans-serif; font-size: 12px; padding: 4px 14px; border-radius: 20px; letter-spacing: 0.04em; }
+  .hero-cta { margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn { font-family: Arial, sans-serif; font-size: 13px; padding: 10px 24px; border-radius: 4px; text-decoration: none; letter-spacing: 0.04em; transition: all 0.2s; display: inline-block; }
+  .btn-gold { background: var(--gold); color: var(--brown); border: 1px solid var(--gold-dark); }
+  .btn-gold:hover { background: #D4AA10; }
+  .btn-outline { border: 1px solid rgba(245,232,176,0.4); color: var(--gold-light); }
+  .btn-outline:hover { border-color: var(--gold-light); background: rgba(245,232,176,0.08); }
+
+  /* SECTIONS */
+  section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+  .section-label { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.5rem; }
+  h2 { font-size: 1.9rem; font-weight: normal; color: var(--brown); margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 4rem 0; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .about-block h3 { font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.6rem; }
+  .about-block p, .about-block li { font-size: 15px; color: var(--text); line-height: 1.75; }
+  .about-block ul { padding-left: 1.1rem; }
+  .about-block li { margin-bottom: 0.25rem; }
+  .lang-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.25rem; }
+  .lang-pill { background: var(--cream-dark); border: 1px solid var(--border); font-family: Arial, sans-serif; font-size: 12px; padding: 3px 10px; border-radius: 3px; color: var(--brown-mid); }
+
+  /* RESEARCH */
+  .pub-card { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; border-left: 3px solid var(--gold); }
+  .pub-card h3 { font-size: 1rem; font-weight: normal; font-style: italic; color: var(--brown); margin-bottom: 0.35rem; line-height: 1.5; }
+  .pub-meta { font-family: Arial, sans-serif; font-size: 12px; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .pub-status { display: inline-block; font-family: Arial, sans-serif; font-size: 11px; padding: 2px 10px; border-radius: 3px; font-weight: bold; letter-spacing: 0.04em; }
+  .status-forthcoming { background: var(--gold-light); color: var(--gold-dark); }
+  .status-published { background: #D4EDDA; color: #1A5C2A; }
+  .pub-link { font-family: Arial, sans-serif; font-size: 12px; color: var(--gold-dark); text-decoration: none; margin-left: 0.75rem; }
+  .pub-link:hover { text-decoration: underline; }
+
+  /* CONFERENCES */
+  .conf-item { display: flex; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .conf-year { font-family: Arial, sans-serif; font-size: 13px; color: var(--gold-dark); font-weight: bold; min-width: 40px; padding-top: 2px; }
+  .conf-title { font-size: 15px; color: var(--text); line-height: 1.6; }
+  .conf-venue { font-family: Arial, sans-serif; font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .conf-role { font-family: Arial, sans-serif; font-size: 11px; color: var(--brown-mid); background: var(--cream-dark); padding: 2px 8px; border-radius: 3px; display: inline-block; margin-top: 4px; }
+
+  /* TEACHING */
+  .course-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .course-card { background: var(--white); border: 1px solid var(--border); border-radius: 5px; padding: 0.9rem 1rem; }
+  .course-code { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.08em; color: var(--gold-dark); margin-bottom: 0.2rem; }
+  .course-title { font-size: 14px; color: var(--brown); line-height: 1.4; margin-bottom: 0.3rem; }
+  .course-meta { font-family: Arial, sans-serif; font-size: 11px; color: var(--text-muted); }
+  .course-role { font-family: Arial, sans-serif; font-size: 11px; color: var(--brown-mid); background: var(--cream-dark); display: inline-block; padding: 1px 7px; border-radius: 3px; margin-top: 4px; }
+
+  /* CV */
+  .edu-item { margin-bottom: 1.5rem; }
+  .edu-inst { font-size: 1.05rem; color: var(--brown); font-weight: normal; }
+  .edu-degree { font-size: 0.95rem; color: var(--text); margin-top: 0.15rem; }
+  .edu-detail { font-family: Arial, sans-serif; font-size: 13px; color: var(--text-muted); margin-top: 0.1rem; }
+  .edu-year { font-family: Arial, sans-serif; font-size: 12px; color: var(--gold-dark); float: right; }
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+  .cert-card { background: var(--white); border: 1px solid var(--border); border-radius: 5px; padding: 0.75rem 1rem; font-family: Arial, sans-serif; }
+  .cert-name { font-size: 13px; color: var(--brown); font-weight: bold; }
+  .cert-org { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 0.5rem; }
+  .skills-block h3 { font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .skill-tag { background: var(--cream-dark); border: 1px solid var(--border); font-family: Arial, sans-serif; font-size: 12px; padding: 3px 10px; border-radius: 3px; color: var(--brown-mid); }
+  .member-list { list-style: none; }
+  .member-list li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 15px; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+  .member-list li:last-child { border-bottom: none; }
+  .member-year { font-family: Arial, sans-serif; font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+  .member-sub { font-family: Arial, sans-serif; font-size: 12px; color: var(--text-muted); display: block; margin-top: 1px; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .contact-item { display: flex; flex-direction: column; gap: 0.25rem; }
+  .contact-label { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+  .contact-val { font-size: 15px; color: var(--brown); }
+  .contact-val a { color: var(--gold-dark); text-decoration: none; }
+  .contact-val a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer { background: var(--brown); color: rgba(245,232,176,0.5); text-align: center; padding: 2rem; font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.04em; }
+
+  @media (max-width: 640px) {
+    .about-grid, .course-grid, .skills-grid, .contact-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 1.9rem; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Minervah Wathke</span>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <img class="hero-sunflower" src="sunflower.png" alt="Sunflower">
+  <h1>Minervah Wathke</h1>
+  <p class="hero-pronounce">Min-nerve-uh Watt-key</p>
+  <p class="hero-pronoun">she / her</p>
+  <p class="hero-tagline">Political scientist specializing in political linguistic pathology, stochastic terrorism, and the intersection of religion, psychology, and public policy.</p>
+  <div class="hero-fields">
+    <span class="field-tag">American Politics &amp; Public Policy</span>
+    <span class="field-tag">International Relations</span>
+    <span class="field-tag">Political Psychology</span>
+    <span class="field-tag">Political Communication</span>
+    <span class="field-tag">Translational Research</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#research" class="btn btn-gold">View Research</a>
+    <a href="mailto:minervahwathke@missouri.edu" class="btn btn-outline">Get in Touch</a>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2>Background</h2>
+  <div class="about-grid">
+    <div class="about-block">
+      <h3>Current Position</h3>
+      <p>PhD Student in Political Science at the University of Missouri, with graduate instructor responsibilities in American Government and State &amp; Local Politics. Active in translational research through the NSF-backed Mizzou TEC-Hub and the Teaching for Learning Center.</p>
+    </div>
+    <div class="about-block">
+      <h3>Subject Matter</h3>
+      <ul>
+        <li>Political Linguistic Pathology</li>
+        <li>Stochastic Terrorism</li>
+        <li>Religion &amp; Politics</li>
+        <li>Political Psychology</li>
+        <li>Neoliberalism &amp; the Far Right</li>
+        <li>Political Communication</li>
+      </ul>
+    </div>
+    <div class="about-block">
+      <h3>Favored Methods</h3>
+      <ul>
+        <li>Natural Language Processing</li>
+        <li>Policy Diffusion</li>
+        <li>Historical Institutionalism</li>
+        <li>Latent Trait Theory</li>
+        <li>Systemist Methods</li>
+      </ul>
+    </div>
+    <div class="about-block">
+      <h3>Languages</h3>
+      <div class="lang-row">
+        <span class="lang-pill">Spanish — Fluent</span>
+        <span class="lang-pill">ASL — Polite</span>
+        <span class="lang-pill">Arabic: Masri — Polite</span>
+        <span class="lang-pill">German — Beginner</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-label">Research</div>
+  <h2>Publications &amp; Projects</h2>
+
+  <div class="pub-card">
+    <p class="pub-meta">Wathke, Minervah &amp; Scott LaCombe</p>
+    <h3>"The Rainbow Peril? Population Perceptions and Support for LGBTQ Restrictions"</h3>
+    <span class="pub-status status-forthcoming">Forthcoming</span>
+    <p style="font-family:Arial,sans-serif;font-size:13px;color:var(--text-muted);margin-top:0.5rem;">Examines the relationship between population size perceptions and public support for LGBTQ legislative restrictions. Presented at the 122nd Annual APSA Conference (2026).</p>
+  </div>
+
+  <div class="pub-card">
+    <p class="pub-meta">Wathke, Minervah &amp; Michael A. Smith</p>
+    <h3>"Towards a Labor Hostility Index: An Expository into the Effects of State Labor Laws on Union Density in the United States"</h3>
+    <span class="pub-status status-forthcoming">Forthcoming</span>
+    <p style="font-family:Arial,sans-serif;font-size:13px;color:var(--text-muted);margin-top:0.5rem;">Develops a novel index measuring state-level hostility toward organized labor, analyzing effects on union density 1964–2024. Presented at the 83rd Annual MPSA Conference and MU Research Forum (2025–2026).</p>
+  </div>
+
+  <div class="pub-card">
+    <p class="pub-meta">Acun et al. — Visual International Relations Project (VIRP), 2025</p>
+    <h3>"Global Power Dynamics in the Contemporary Space System" — Review of Del Canto Viterale (2025)</h3>
+    <span class="pub-status status-published">Published</span>
+    <a class="pub-link" href="https://visualinternationalrelationsproject.com/del-canto-viterale-2025-_global-power-dynamics-in-the-contemporary-space-system/" target="_blank">View →</a>
+  </div>
+
+  <div class="pub-card">
+    <p class="pub-meta">Wathke et al. — Istituto di Alti Studi di Geopolitica e Scienze Ausiliarie, 2018</p>
+    <h3>"Geopolitics of Uzbekistan: A Threatened Autarky amid the Eurasian Heartland"</h3>
+    <span class="pub-status status-published">Published</span>
+    <a class="pub-link" href="https://visualinternationalrelationsproject.com/wathke-et-al-2017_the-geopolitics-of-uzbekistan/" target="_blank">VIRP Review →</a>
+  </div>
+
+  <h2 style="margin-top:3rem;">Conference Presentations</h2>
+
+  <div class="conf-item">
+    <span class="conf-year">2026</span>
+    <div>
+      <p class="conf-title">"The Rainbow Peril? Population Perceptions and Support for LGBTQ Restrictions"</p>
+      <p class="conf-venue">122nd Annual APSA Conference</p>
+    </div>
+  </div>
+  <div class="conf-item">
+    <span class="conf-year">2026</span>
+    <div>
+      <p class="conf-title">"Towards a Labor Hostility Index; Right to Work Legislation &amp; Unionization in the United States 1964–2024"</p>
+      <p class="conf-venue">83rd Annual MPSA Conference</p>
+      <span class="conf-role">Also served as Discussant: History, Literature, and Politics</span>
+    </div>
+  </div>
+  <div class="conf-item">
+    <span class="conf-year">2025</span>
+    <div>
+      <p class="conf-title">"Towards a Labor Hostility Index: An Expository into the Effects of State Labor Laws on Union Density"</p>
+      <p class="conf-venue">42nd Research &amp; Creative Activities Forum, University of Missouri</p>
+    </div>
+  </div>
+  <div class="conf-item">
+    <span class="conf-year">2025</span>
+    <div>
+      <p class="conf-title">"Olathe, Kansas: City of Corporations or Corporate City"</p>
+      <p class="conf-venue">82nd Annual MPSA Conference</p>
+      <span class="conf-role">Discussant: Religion, Politics, and Legal Theory</span>
+    </div>
+  </div>
+  <div class="conf-item">
+    <span class="conf-year">2020</span>
+    <div>
+      <p class="conf-title">"Post-anarchism as Democratic Activism"</p>
+      <p class="conf-venue">78th Annual MPSA Conference</p>
+    </div>
+  </div>
+  <div class="conf-item">
+    <span class="conf-year">2019</span>
+    <div>
+      <p class="conf-title">"Exploring Post-Anarchism within Liberal Democracy"</p>
+      <p class="conf-venue">77th Annual MPSA Conference</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="section-label">Teaching</div>
+  <h2>Courses &amp; Instruction</h2>
+
+  <p style="font-size:15px;color:var(--text-muted);margin-bottom:1.5rem;font-family:Arial,sans-serif;">Five years of teaching experience spanning political science, history, and philosophy, including large lecture formats, online/hybrid delivery, and extended simulation pedagogy.</p>
+
+  <div class="course-grid">
+    <div class="course-card">
+      <p class="course-code">PO 2200 — Political Science</p>
+      <p class="course-title">Missouri Politics</p>
+      <p class="course-meta">University of Missouri · Spring 2026</p>
+      <span class="course-role">Graduate Instructor · Extended Simulation</span>
+    </div>
+    <div class="course-card">
+      <p class="course-code">PO 1100 — Political Science</p>
+      <p class="course-title">American Government</p>
+      <p class="course-meta">University of Missouri · Fall 2025</p>
+      <span class="course-role">Graduate Instructor · Hybrid / Online / Large Lecture</span>
+    </div>
+    <div class="course-card">
+      <p class="course-code">PO — Political Science</p>
+      <p class="course-title">State &amp; Local Government</p>
+      <p class="course-meta">Emporia State University · Fall 2020</p>
+      <span class="course-role">Teaching Assistant</span>
+    </div>
+    <div class="course-card">
+      <p class="course-code">PI — Philosophy</p>
+      <p class="course-title">Introduction to Philosophy</p>
+      <p class="course-meta">Emporia State University · Fall 2021</p>
+      <span class="course-role">Teaching Assistant · Guest Lecturer</span>
+    </div>
+    <div class="course-card">
+      <p class="course-code">PI — Philosophy</p>
+      <p class="course-title">Ethics and Moral Philosophy</p>
+      <p class="course-meta">Emporia State University · Spring 2021</p>
+      <span class="course-role">Teaching Assistant · Guest Lecturer</span>
+    </div>
+    <div class="course-card">
+      <p class="course-code">HI — History</p>
+      <p class="course-title">World Cultures to 1500 CE</p>
+      <p class="course-meta">Emporia State University · 2019–2022</p>
+      <span class="course-role">Teaching Assistant (multiple terms, incl. online)</span>
+    </div>
+  </div>
+
+  <h3 style="margin-top:2.5rem;font-weight:normal;font-size:1.2rem;color:var(--brown);margin-bottom:1rem;">Guest Lectures</h3>
+  <div class="conf-item"><span class="conf-year" style="font-size:12px;min-width:60px;">Sp. 2026</span><div><p class="conf-title" style="font-size:14px;">Fundamentals of Parliamentary Procedure</p><p class="conf-venue">Missouri Politics 2200, University of Missouri</p></div></div>
+  <div class="conf-item"><span class="conf-year" style="font-size:12px;min-width:60px;">Fa. 2025</span><div><p class="conf-title" style="font-size:14px;">Tariffs &amp; American Politics</p><p class="conf-venue">American Government 1100, University of Missouri</p></div></div>
+  <div class="conf-item"><span class="conf-year" style="font-size:12px;min-width:60px;">Fa. 2021</span><div><p class="conf-title" style="font-size:14px;">Socrates &amp; the Sophists in Plato's Republic</p><p class="conf-venue">Introduction to Philosophy, Emporia State University</p></div></div>
+  <div class="conf-item"><span class="conf-year" style="font-size:12px;min-width:60px;">Sp. 2021</span><div><p class="conf-title" style="font-size:14px;">Kant &amp; the Categorical Imperative</p><p class="conf-venue">Ethics &amp; Moral Philosophy, Emporia State University</p></div></div>
+</section>
+
+<hr class="divider">
+
+<!-- CV -->
+<section id="cv">
+  <div class="section-label">Curriculum Vitae</div>
+  <h2>Education</h2>
+
+  <div class="edu-item">
+    <span class="edu-year">2025 – present</span>
+    <p class="edu-inst">University of Missouri, Columbia</p>
+    <p class="edu-degree">Doctor of Philosophy — Political Science</p>
+    <p class="edu-detail">American Politics &amp; Public Policy · International Relations</p>
+  </div>
+  <div class="edu-item">
+    <span class="edu-year">2024 – 2025</span>
+    <p class="edu-inst">Johnson County Community College</p>
+    <p class="edu-degree">Business Administration &amp; Deaf Studies / ASL <em style="font-size:13px;">[non-degree]</em></p>
+  </div>
+  <div class="edu-item">
+    <span class="edu-year">2023</span>
+    <p class="edu-inst">Emporia State University</p>
+    <p class="edu-degree">Master of Arts — History <em style="color:var(--gold-dark);font-size:14px;">with High Honors (top 10%)</em></p>
+    <p class="edu-detail">Race, Gender, and Identity since Late Antiquity</p>
+  </div>
+  <div class="edu-item">
+    <span class="edu-year">2019</span>
+    <p class="edu-inst">Emporia State University</p>
+    <p class="edu-degree">Bachelor of Arts — Political Science <em style="color:var(--gold-dark);font-size:14px;">with Honors</em></p>
+    <p class="edu-detail">Minors in History &amp; Philosophy</p>
+  </div>
+
+  <h2 style="margin-top:3rem;">Skills &amp; Methods</h2>
+  <div class="skills-grid">
+    <div class="skills-block">
+      <h3>Quantitative &amp; Computational</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">R for Statistical Computing</span>
+        <span class="skill-tag">Stata</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">LaTeX</span>
+        <span class="skill-tag">NLP</span>
+        <span class="skill-tag">Latent Trait Theory</span>
+        <span class="skill-tag">Policy Diffusion</span>
+      </div>
+    </div>
+    <div class="skills-block">
+      <h3>Professional &amp; Facilitation</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Project Management</span>
+        <span class="skill-tag">Parliamentary Procedure (RONR)</span>
+        <span class="skill-tag">Translational Research</span>
+        <span class="skill-tag">Systemist Methods</span>
+        <span class="skill-tag">Non-Violent Communication</span>
+        <span class="skill-tag">Public Speaking</span>
+        <span class="skill-tag">Canvas LMS (4 yr.)</span>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:3rem;">Certifications</h2>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <p class="cert-name">Parliamentary Fundamentals</p>
+      <p class="cert-org">National Association of Parliamentarians · 2026</p>
+    </div>
+    <div class="cert-card">
+      <p class="cert-name">Systemist Methods</p>
+      <p class="cert-org">Visual International Relations Project · 2025</p>
+    </div>
+    <div class="cert-card">
+      <p class="cert-name">Excellence in Teaching Badge</p>
+      <p class="cert-org">Teaching for Learning Center, Univ. of Missouri · 2025</p>
+    </div>
+    <div class="cert-card">
+      <p class="cert-name">Communi-TEC I &amp; II</p>
+      <p class="cert-org">Mizzou TEC-Hub / NSF · 2026</p>
+    </div>
+    <div class="cert-card">
+      <p class="cert-name">CITI-Sci Translational Research</p>
+      <p class="cert-org">Mizzou TEC-Hub / NSF · 2025</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top:3rem;">Professional Memberships</h2>
+  <ul class="member-list">
+    <li><span>American Political Science Association (APSA)<span class="member-sub"></span></span><span class="member-year">2026 – present</span></li>
+    <li><span>Project Management Institute (PMI)<span class="member-sub">Kansas City Mid-America Chapter</span></span><span class="member-year">2026 – present</span></li>
+    <li><span>International Society of Political Psychologists (ISPP)<span class="member-sub"></span></span><span class="member-year">2026 – present</span></li>
+    <li><span>National Association of Parliamentarians (NAP)<span class="member-sub">Missouri State Association of Parliamentarians</span></span><span class="member-year">2026 – present</span></li>
+    <li><span>American Philosophical Association, Central Division (APA)<span class="member-sub"></span></span><span class="member-year">2025 – present</span></li>
+    <li><span>Midwest Political Science Association (MPSA)<span class="member-sub">MPSA Women's Caucus (2025–present)</span></span><span class="member-year">2019 – present</span></li>
+    <li><span>North American Nietzsche Society (NANS)<span class="member-sub"></span></span><span class="member-year">2020 – present</span></li>
+  </ul>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2>Get in Touch</h2>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <span class="contact-label">Email</span>
+      <span class="contact-val"><a href="mailto:minervahwathke@missouri.edu">minervahwathke@missouri.edu</a></span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">Phone</span>
+      <span class="contact-val">620.757.9778</span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">Location</span>
+      <span class="contact-val">Eudora, KS · Columbia, MO</span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">Institution</span>
+      <span class="contact-val">Truman School of Government &amp; Public Affairs<br>University of Missouri</span>
+    </div>
+  </div>
+  <div style="margin-top:2.5rem;padding:1.25rem 1.5rem;background:var(--white);border:1px solid var(--border);border-radius:6px;border-left:3px solid var(--gold);">
+    <p style="font-size:14px;color:var(--text-muted);font-family:Arial,sans-serif;line-height:1.8;">I welcome inquiries from fellow researchers, potential collaborators, and organizations interested in translational research, political communication, or facilitation work. Please reach out by email — I aim to respond within 48 hours.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Minervah Wathke &nbsp;·&nbsp; Political Scientist &nbsp;·&nbsp; University of Missouri</p>
+  <p style="margin-top:0.5rem;font-size:11px;opacity:0.6;">minervahwathke@missouri.edu</p>
+</footer>
+
+</body>
+</html>
